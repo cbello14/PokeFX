@@ -1,0 +1,22 @@
+.root {
+  -fx-font-family: "Monospace";
+  -fx-base: #210000;
+  -fx-background: derive(-fx-base, 26.4%);
+  -fx-control-inner-background: derive(-fx-base, 80%);
+  -fx-control-inner-background-alt: derive(-fx-control-inner-background, -2%);
+}
+
+:focused {
+  -fx-focus-color: derive(-fx-base, 111%);
+  -fx-faint-focus-color: transparent;
+}
+
+#customBtn {
+  -fx-font-family: "Monospace";
+  -fx-base: #210000;
+  -fx-background: derive(-fx-base, 26.4%);
+  -fx-control-inner-background: derive(-fx-base, 80%);
+  -fx-control-inner-background-alt: derive(-fx-control-inner-background, -2%);
+  -fx-focus-color: derive(-fx-base, 111%);
+  -fx-faint-focus-color: transparent;
+}

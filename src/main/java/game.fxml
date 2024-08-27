@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1080.0" tabClosingPolicy="UNAVAILABLE" tabMinHeight="20.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.Client">
+   <tabs>
+      <Tab text="Server Info">
+         <content>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="hostStatusLabel" text="Click Host or Connect to play!">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets></Label>
+                  <HBox alignment="CENTER" prefHeight="24.0" prefWidth="600.0">
+                     <children>
+                        <Label fx:id="ipLabel" text="Your IP:">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></Label>
+                        <Button fx:id="hostServerButton" mnemonicParsing="false" onAction="#hostServer" text="Host">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="closeServerButton" disable="true" mnemonicParsing="false" onAction="#closeServer" text="Close">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="24.0" prefWidth="600.0">
+                     <children>
+                        <Label text="Connect to server: ">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></Label>
+                        <TextField fx:id="serverConnectField" prefHeight="25.0" prefWidth="140.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></TextField>
+                        <Button fx:id="connectToServerButton" mnemonicParsing="false" onAction="#connectToServer" text="Connect">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="disconnectFromServerButton" disable="true" mnemonicParsing="false" onAction="#closeClient" text="Disconnect">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </Tab>
+    <Tab fx:id="connectionTab" disable="true" text="Connection">
+         <content>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Select a name to connect!">
+                     <font>
+                        <Font name="Consolas" size="12.0" />
+                     </font>
+                  </Label>
+                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="20.0" prefWidth="0.0" />
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="600.0">
+                     <children>
+                        <Label text="Your Name:  ">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="yourNameField" prefWidth="180.0" text="Guest&lt;index&gt;">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></TextField>
+                        <Button fx:id="confirmNameButton" mnemonicParsing="false" text="Confirm">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="600.0">
+                     <children>
+                        <Label text="Connect to: ">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <ComboBox fx:id="otherPeopleDropdown" prefWidth="180.0" promptText="Select Opponent" visibleRowCount="5">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></ComboBox>
+                        <Button mnemonicParsing="false" onAction="#connectButtonClicked" text="Connect">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </Tab>
+      <Tab fx:id="teambuilderTab" disable="true" text="Teambuilder">
+         <content>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="600.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#loadTeam" text="Load Team">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></Button>
+                        <Button mnemonicParsing="false" onAction="#saveTeam" text="Save Team">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="Pokemon1" contentDisplay="TOP">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="Pokemon2" contentDisplay="TOP">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="Pokemon3" contentDisplay="TOP">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="Pokemon4" contentDisplay="TOP">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="Pokemon5" contentDisplay="TOP">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="Pokemon6" contentDisplay="TOP">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></Button>
+                     </children>
+                  </HBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="264.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                           <children>
+                              <Label alignment="TOP_CENTER" contentDisplay="TOP" text="Name:">
+                                 <padding>
+                                    <Insets right="10.0" top="10.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="nameFilter" alignment="CENTER" promptText="hiaslkdj">
+                                 <padding>
+                                    <Insets bottom="5.0" right="10.0" top="5.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets right="10.0" top="10.0" />
+                                 </HBox.margin></TextField>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="Type:">
+                                 <padding>
+                                    <Insets right="10.0" top="10.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ComboBox fx:id="typeFilter" prefWidth="150.0">
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </HBox.margin></ComboBox>
+                           </children>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                           <content>
+                              <VBox fx:id="pokemonFilterDisplay" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </content>
+      </Tab>
+      <Tab fx:id="battleTab" disable="true" text="Battle">
+         <content>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0">
+                     <children>
+                        <Label minHeight="25.0" prefHeight="25.0" text="To Everyone">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane minHeight="620.0" prefHeight="620.0" prefWidth="150.0">
+                           <content>
+                              <Label fx:id="toEveryoneLabel" />
+                           </content>
+                        </ScrollPane>
+                        <TextField fx:id="toEveryoneField" minHeight="25.0" onKeyPressed="#sendEveryone" prefHeight="25.0" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" minWidth="480.0" prefHeight="500.0" prefWidth="480.0">
+                     <children>
+                        <Label fx:id="opponentNameLabel" minHeight="25.0" text="&lt;OpponentName&gt;">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </Label>
+                        <Canvas fx:id="BattleCanvas" height="515.0" width="480.0" />
+                        <VBox alignment="CENTER" minHeight="130.0" minWidth="480.0" prefHeight="130.0" prefWidth="480.0">
+                           <children>
+                              <ToggleButton fx:id="lockInButton" disable="true" minHeight="25.0" minWidth="480.0" mnemonicParsing="false" onAction="#battleLockedIn" prefHeight="25.0" prefWidth="480.0" text="Lock In" />
+                              <HBox fx:id="battleMovesBox" prefHeight="25.0" prefWidth="300.0">
+                                 <children>
+                                    <ToggleButton fx:id="battleMoveOne" minHeight="25.0" minWidth="120.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Move1" HBox.hgrow="ALWAYS">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="battleOptions" />
+                                       </toggleGroup>
+                                    </ToggleButton>
+                                    <ToggleButton fx:id="battleMoveTwo" minHeight="25.0" minWidth="120.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Move2" toggleGroup="$battleOptions" HBox.hgrow="ALWAYS" />
+                                    <ToggleButton fx:id="battleMoveThree" minHeight="25.0" minWidth="120.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Move3" toggleGroup="$battleOptions" HBox.hgrow="ALWAYS" />
+                                    <ToggleButton fx:id="battleMoveFour" minHeight="25.0" minWidth="120.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Move4" toggleGroup="$battleOptions" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="battlePokemonBox" minHeight="80.0" minWidth="480.0" prefHeight="80.0" prefWidth="480.0">
+                                 <children>
+                                    <ToggleButton fx:id="battlePokeOne" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" toggleGroup="$battleOptions" HBox.hgrow="ALWAYS" />
+                                    <ToggleButton fx:id="battlePokeTwo" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" toggleGroup="$battleOptions" HBox.hgrow="ALWAYS" />
+                                    <ToggleButton fx:id="battlePokeThree" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" toggleGroup="$battleOptions" HBox.hgrow="ALWAYS" />
+                                    <ToggleButton fx:id="battlePokeFour" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" toggleGroup="$battleOptions" HBox.hgrow="ALWAYS" />
+                                    <ToggleButton fx:id="battlePokeFive" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" toggleGroup="$battleOptions" HBox.hgrow="ALWAYS" />
+                                    <ToggleButton fx:id="battlePokeSix" minHeight="80.0" minWidth="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" toggleGroup="$battleOptions" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0">
+                     <children>
+                        <Label fx:id="toOpponentNameLabel" minHeight="25.0" prefHeight="25.0" text="To &lt;OpponentName&gt;">
+                           <font>
+                              <Font name="Consolas" size="12.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane minHeight="620.0" prefHeight="620.0" prefWidth="150.0">
+                           <content>
+                              <Label fx:id="toOpponentLabel" />
+                           </content>
+                        </ScrollPane>
+                        <TextField fx:id="toOpponentField" minHeight="25.0" onKeyPressed="#sendText" prefHeight="25.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </content>
+      </Tab>
+      <Tab text="Themes">
+         <content>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label text="Select a theme below:">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <ComboBox fx:id="themesSelector" onAction="#updateTheme" prefWidth="150.0" promptText="Default Theme">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </ComboBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

@@ -1,0 +1,6 @@
+Geodude--Rock+Ground+74|40|80|100|30|30|20@Self-Destruct|Normal|Physical|200~100~5~5~0$null$null$null
+null
+null
+null
+null
+null

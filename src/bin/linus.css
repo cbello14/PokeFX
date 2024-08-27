@@ -1,0 +1,26 @@
+.root {
+  -fx-font-family: "Monospace";
+  -fx-base: #000f2140;
+  -fx-background: derive(-fx-base, 26.4%);
+  -fx-background-image: url("linus.jpg");
+  -fx-background-size: 1080 700;
+  -fx-background-position: center center;
+  -fx-text-fill: black;
+  -fx-control-inner-background: derive(-fx-base, 80%);
+  -fx-control-inner-background-alt: derive(-fx-control-inner-background, -2%);
+}
+
+:focused {
+  -fx-focus-color: derive(-fx-base, 111%);
+  -fx-faint-focus-color: transparent;
+}
+
+#customBtn {
+  -fx-font-family: "Monospace";
+  -fx-base: #000f21;
+  -fx-background: derive(-fx-base, 26.4%);
+  -fx-control-inner-background: derive(-fx-base, 80%);
+  -fx-control-inner-background-alt: derive(-fx-control-inner-background, -2%);
+  -fx-focus-color: derive(-fx-base, 111%);
+  -fx-faint-focus-color: transparent;
+}

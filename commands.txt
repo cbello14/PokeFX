@@ -1,0 +1,64 @@
+https://docs.google.com/presentation/d/1h8z6mPPoTE8vIE9RFk9nlWkX6cp7Adj5xfWbyIFoSA0/edit?usp=sharing
+
+These are all things the Server can recieve / the Clients can send
+
+Implemented:
+    
+    xquery - send info to server
+    all <String> - Send <String> to all other clients
+	name <String> - Changes your name internally in the server
+	connectAccept <String> - accepts the connection request to <String> player name
+	connectReject <String> = rejects the connection request to <String> player name
+	connect <String> - connect to <String> player name
+	dm <String> - send <String> message to all connected clients
+	move <Integer,  String> - send the move that the client used, <Integer> is the index of the move stored in whatever datastructure we use (ie: moves[3] = acid)
+    xf <String1> <String2>- xquery pokemon for starting with <String> that has type <String2>
+        - sends the <f> command
+    xp <String> - xquery for the pokemon that is named <String>
+        - sends the <p> command
+    xm <String> - xquery moves for <String>
+        - sends the <m> command
+    xpm <String> <int> - xquery for all the moves of the pokemon named <String> with <int> being the location of the pokemon in the team that we are getting the moves of
+        - sends the <pm> command
+    move <Integer, Integer[]> - choose move to use 0-3 is a move of pokemon, 4 is a swap, -1 is not playing; the array is the index of all the pokemon it is hitting
+	close - closes the server (not fully functional yet)
+	loadTeam <String> - loads <String> team into the battle
+    quit - Sent when the client attempts to close the gui/app by pressing the x button
+        - sends the <exit> command
+
+To Be Implemented:
+
+    team <String> - Send <String> to all teammates
+    item <Integer> - send the item that the client used on themselves
+    replace <String> - the client replaced their current pokemon with the pokemon <String>
+    status <String> - the client sends their entire lineup, including all details using some static method we will use 
+        (ie: a pikachu with 3 health no moves left and certain status effects will be turned into a string that the server can decode back into the same info)
+
+These are all things the Server can send / the Clients can recieve
+
+Implemented:
+
+	names <String> <String>... - One of the names on the list has changed, so reset the name dropdown
+	nameInit <String> <String> <String>... - Sends the guest name of the new player to that player, as well as the names of every other client
+	connect <String> - request connect to <String> player name
+	connectAccept <String> = <String> player name accepted your connection request
+	connectReject <String> = <String> player name rejected your connection request
+	dm <String> - recieve <String> message from connected client
+	close - tells the client the server is now closed (not fully functional yet)
+	battleStart - starts the battle ui updates
+    myIndex - tells you what index you are in the Battle
+    otherIndex - tells you what index another player is - depreciated
+    exit - tells you to close the app
+    p <String> - the results of an xquery of a specific pokemon
+    m <String> <int> - the results of an xquery of the moves of a specific pokemon along with the location of that pokemon in the team
+    pm <String> - the results of an xquery for all the moves of a specific pokemon (<String> is a comma seperated list of pokemon moves)
+    f <String> - the results of an xquery of all the pokemon that match a filter (<String> is a comma seperated list of pokemon names)
+    all <String> - A message that is viewed in the all chat
+
+To Be Implemented:
+
+     
+    team <String> - A message that is viewed in the team chat
+    damage <Integer> - the damage a user takes from an opponents move
+    status <String> - used for rendering info of opponents and teammates
+    
